@@ -17,10 +17,9 @@ jobs:
     name: Dev
     url: nascimento.com
 needs: build
-steps:
-    
-      - name: Run a one-line script
-      run: echo deploy dev!
+   steps:
+    - name: Run a one-line script
+      run: echo Hello, world!
       
       
       deploy-prod:
