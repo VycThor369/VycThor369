@@ -11,33 +11,33 @@ jobs:
 
   deploy-dev:
     runs-on: ubuntu-latest
-    environment:
+  environment:
     name: Dev
-    url: nascimento.com
-needs: build
-   steps:
+    url: 'nascimento.com'
+  needs: build
+  steps:
     - name: Run a one-line script
       run: echo Hello, world!
       
       
-      deploy-prod:
+   deploy-prod:
     runs-on: ubuntu-latest
-    environment:
+  environment:
     name: prod
-    url: nascimento.com
-     needs: deploy-prod
-steps:
+    url: 'nascimento.com'
+  needs: deploy-prod
+  steps:
     
-      - name: Run a one-line script
+    - name: Run a one-line script
       run: echo deploy prod!
       
    deploy-stage:
     runs-on: ubuntu-latest
-    environment:
+  environment:
     name: stage
-    url: nascimento.com
-     needs: deploy-prod
-steps:
+    url: 'nascimento.com'
+  needs: deploy-prod
+  steps:
     
-      - name: Run a one-line script
+    - name: Run a one-line script
       run: echo deploy stage!
