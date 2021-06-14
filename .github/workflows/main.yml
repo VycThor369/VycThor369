@@ -16,7 +16,7 @@ jobs:
     environment:
     name: Dev
     url: nascimento.com
-     needs: build
+needs: build
 steps:
     
       - name: Run a one-line script
