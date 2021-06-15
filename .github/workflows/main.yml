@@ -23,7 +23,7 @@ jobs:
           uses: azure/webapps-deploy@v2
           with:
             app-name: ${{ env.vycthor369-dev }}
-            publish-profile: ${{ secrets.vycthor369 }}
+            publish-profile: ${{ env.vycthor369 }}
             package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
           
   deploy-stage:
