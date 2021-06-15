@@ -16,8 +16,6 @@ jobs:
       url: 'nascimento.com' 
     needs: build
     steps:
-        - name: Run a one-line script
-          run: echo Deploy Dev
         - name: 'Deploy to Azure WebApp'
           uses: azure/webapps-deploy@v2
           with:
