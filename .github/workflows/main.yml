@@ -10,17 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: dotnet build and publish
-  run: |
-    dotnet restore
-    dotnet build --configuration Release
-    dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
-
   deploy-dev:
     runs-on: ubuntu-latest
     environment:
       name: dev     
     needs: build
     steps:
+    # Run dotnet build and publish
+        - name: dotnet build and publish
+          run: |
+            dotnet restore
+            dotnet build --configuration Release
+            dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
         - name: 'Deploy to Azure WebApp'
           uses: azure/webapps-deploy@v2
           with:
