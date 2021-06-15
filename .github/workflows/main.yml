@@ -9,14 +9,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-        - name: Run a one-line script
-          run: echo Hello, world!
+        - name: dotnet build and publish
+  run: |
+    dotnet restore
+    dotnet build --configuration Release
+    dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
 
   deploy-dev:
     runs-on: ubuntu-latest
     environment:
-      name: dev
-      url: 'nascimento.com' 
+      name: dev     
     needs: build
     steps:
         - name: 'Deploy to Azure WebApp'
@@ -24,13 +26,12 @@ jobs:
           with:
             app-name: ${{ env.vycthor369-dev }}
             publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
-            package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+            package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp
           
   deploy-stage:
     runs-on: ubuntu-latest
     environment:
-      name: stage
-      url: 'nascimento.com' 
+      name: stage      
     needs: deploy-dev
     steps:
         - name: Run a one-line script
